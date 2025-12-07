@@ -95,15 +95,23 @@ Resultado: Status 200 OK e o valor do token (ex: "sghss_token_XYZ..."). Guarde e
 2. Gestão de Pacientes (CRUD)
 
 Método	Endpoint	Ação	Status Esperado	Notas
+
 POST	/api/patients	Cadastra um novo paciente	201 Created	Enviar dados de paciente no Body (JSON).
+
 GET	/api/patients	Lista todos os pacientes	200 OK	Deve estar autenticado.
+
 GET	/api/patients/1	Consulta paciente por ID	200 OK	Substituir 1 pelo ID real.
+
 PUT	/api/patients/1	Atualiza paciente por ID	200 OK	Enviar Body JSON completo com dados atualizados.
+
 DELETE	/api/patients/1	Exclui paciente por ID	204 No Content	Sucesso na exclusão.
+
 GET	/api/patients/999	Consulta ID inexistente	404 Not Found	Teste de erro.
 
 3. Teste de Segurança (Não Funcional)
 
 Método	Endpoint	Objetivo	Status Esperado	Observação
+
 GET	/api/patients	Acesso sem o Header Authorization	401 Unauthorized	Valida o Controle de Acesso (RF02).
+
 POST	/api/patients	Enviar dados inválidos	400 Bad Request	Valida a manipulação de entrada de dados.
