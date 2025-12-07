@@ -22,7 +22,7 @@ O objetivo da API é fornecer uma camada de serviço segura e eficiente para o g
 
 Siga os passos abaixo para configurar o ambiente localmente.
 
-1. Requisitos Prévios
+    1. Requisitos Prévios
 
     PHP 8.2+ instalado e configurado.
 
@@ -30,15 +30,13 @@ Siga os passos abaixo para configurar o ambiente localmente.
 
     Apache com módulo mod_rewrite habilitado.
 
-2. Clonar o Repositório
+    2. Clonar o Repositório
 
-Bash
+    git clone https://github.com/Chorsky/SGHSS-AP.git
 
-git clone https://github.com/Chorsky/SGHSS-AP.git
+    cd SGHSS-API
 
-cd SGHSS-API
-
-3. Configuração do Banco de Dados
+    3. Configuração do Banco de Dados
 
     Crie um banco de dados chamado vidaplus_db.
 
@@ -52,9 +50,9 @@ cd SGHSS-API
 
     Ajuste a Conexão: Edite o arquivo /config/database.php com suas credenciais de acesso ao banco de dados ($user e $pass).
 
-4. Configuração do Servidor Web (URLs Amigáveis)
+    4. Configuração do Servidor Web (URLs Amigáveis)
 
-Para que o roteamento (index.php) funcione corretamente, o arquivo /public/.htaccess deve estar configurado:
+    Para que o roteamento (index.php) funcione corretamente, o arquivo /public/.htaccess deve estar configurado:
 
     Se estiver em um subdiretório (ex: http://localhost/projeto/public/), ajuste a linha: RewriteBase /projeto/public/
 
@@ -78,41 +76,41 @@ A API segue o padrão MVC (Model-View-Controller) simplificado, com um único po
 
 Utilize ferramentas como Postman ou Insomnia para realizar os testes.
 
-1. Teste de Autenticação (Setup)
-
-Método	Endpoint	Objetivo
-POST	/api/auth/login	Obter o token de acesso
-
-Payload Exemplo (JSON Body):
-JSON
-
-{
-  "email": "admin@vidaplus.com",
-  "password": "123456" 
-}
+    1. Teste de Autenticação (Setup)
+    
+    Método	Endpoint	Objetivo
+    POST	/api/auth/login	Obter o token de acesso
+    
+    Payload Exemplo (JSON Body):
+    JSON
+    
+    {
+      "email": "admin@vidaplus.com",
+      "password": "123456" 
+    }
 
 Resultado: Status 200 OK e o valor do token (ex: "sghss_token_XYZ..."). Guarde este token para os próximos testes, inserindo-o no Header: Authorization: Bearer [TOKEN_AQUI].
 
-2. Gestão de Pacientes (CRUD)
+    2. Gestão de Pacientes (CRUD)
 
-Método	Endpoint	Ação	Status Esperado	Notas
+    Método	Endpoint	Ação	Status Esperado	Notas
 
-POST	/api/patients	Cadastra um novo paciente	201 Created	Enviar dados de paciente no Body (JSON).
+    POST	/api/patients	Cadastra um novo paciente	201 Created	Enviar dados de paciente no Body (JSON).
 
-GET	/api/patients	Lista todos os pacientes	200 OK	Deve estar autenticado.
+    GET	/api/patients	Lista todos os pacientes	200 OK	Deve estar autenticado.
 
-GET	/api/patients/1	Consulta paciente por ID	200 OK	Substituir 1 pelo ID real.
+    GET	/api/patients/1	Consulta paciente por ID	200 OK	Substituir 1 pelo ID real.
 
-PUT	/api/patients/1	Atualiza paciente por ID	200 OK	Enviar Body JSON completo com dados atualizados.
+    PUT	/api/patients/1	Atualiza paciente por ID	200 OK	Enviar Body JSON completo com dados atualizados.
 
-DELETE	/api/patients/1	Exclui paciente por ID	204 No Content	Sucesso na exclusão.
+    DELETE	/api/patients/1	Exclui paciente por ID	204 No Content	Sucesso na exclusão.
 
-GET	/api/patients/999	Consulta ID inexistente	404 Not Found	Teste de erro.
+    GET	/api/patients/999	Consulta ID inexistente	404 Not Found	Teste de erro.
 
-3. Teste de Segurança (Não Funcional)
+    3. Teste de Segurança (Não Funcional)
 
-Método	Endpoint	Objetivo	Status Esperado	Observação
+    Método	Endpoint	Objetivo	Status Esperado	Observação
 
-GET	/api/patients	Acesso sem o Header Authorization	401 Unauthorized	Valida o Controle de Acesso (RF02).
+    GET	/api/patients	Acesso sem o Header Authorization	401 Unauthorized	Valida o Controle de Acesso (RF02).
 
-POST	/api/patients	Enviar dados inválidos	400 Bad Request	Valida a manipulação de entrada de dados.
+    POST	/api/patients	Enviar dados inválidos	400 Bad Request	Valida a manipulação de entrada de dados.
