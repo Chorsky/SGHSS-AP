@@ -35,6 +35,7 @@ Siga os passos abaixo para configurar o ambiente localmente.
 Bash
 
 git clone [INSIRA O LINK DO SEU REPOSITÓRIO AQUI]
+
 cd SGHSS-API
 
 3. Configuração do Banco de Dados
