@@ -34,7 +34,7 @@ Siga os passos abaixo para configurar o ambiente localmente.
 
 Bash
 
-git clone [INSIRA O LINK DO SEU REPOSITÓRIO AQUI]
+git clone https://github.com/Chorsky/SGHSS-AP.git
 
 cd SGHSS-API
 
